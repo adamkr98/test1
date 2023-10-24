@@ -10,7 +10,7 @@ export function Meat(){
         }
     }
     return <div>
-        <h1>This is the Home page</h1>
+        <h1>This is the Meat page</h1>
         <button onClick={() => {handleSignOut()}}>Sign Out</button>
     </div> 
     
