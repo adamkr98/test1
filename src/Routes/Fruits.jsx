@@ -1,4 +1,8 @@
 import { signOut,getAuth } from "firebase/auth"
+import { getDatabase, ref, get } from 'firebase/database';
+import { database } from './../fbconfig';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export function Fruits(){
     const auth = getAuth()
