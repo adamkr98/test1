@@ -1,5 +1,6 @@
 import { signOut,getAuth } from "firebase/auth"
 import React, { useRef, useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 export function Home(){
@@ -34,7 +35,9 @@ export function Home(){
         Your journey begins Here!
     </p>
     <button onClick={handleJoinsUsClick} className='border border-white text-white text-xl p-2 rounded-md hover:bg-white hover:text-[#606C38]'>
+        <Link to="/register">
         Join Us!
+        </Link>
     </button>
 </div>
 

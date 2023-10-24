@@ -7,18 +7,21 @@ const Signin = () => {
     const [password,setPassword] = useState('')
     const auth = getAuth()
     const navigate = useNavigate();
+
     async function handleSignIn(e){
         e.preventDefault();
     signInWithEmailAndPassword(auth,email,password)
     .then((user) => {
         // Success...
+        alert('User loggedIn!')
         console.log(user)
-        navigate('/home')
+        navigate('/categories')
         //...
     })
     .catch((error) => {
         // Error
         console.log(error)
+        alert('The email or/and password are incorrect!')
     })
     }
 

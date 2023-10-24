@@ -24,9 +24,15 @@ const Navbar = () => {
             <div className="w-[8rem] mr-4 flex justify-around">
               <div className="w-full flex justify-around items-center">
                 <button className="w-fit p-2 font-bold rounded-md border-2 border-transparent hover:border-2 hover:border-gray-400">
-                  SignIn
+                  <Link to="/register">
+                    SignUp
+                  </Link>
                 </button>
-                <button className="w-fit p-2 rounded-md border-2 border-transparent hover:border-2 hover:border-gray-400">Login</button>
+                <button className="w-fit p-2 rounded-md border-2 border-transparent hover:border-2 hover:border-gray-400">
+                  <Link to="/signin">
+                    LogIn
+                  </Link>
+                  </button>
               </div>
             </div>
         
