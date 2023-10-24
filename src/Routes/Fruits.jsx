@@ -10,7 +10,7 @@ export function Fruits(){
         }
     }
     return <div>
-        <h1>This is the Home page</h1>
+        <h1>This is the Fruits page</h1>
         <button onClick={() => {handleSignOut()}}>Sign Out</button>
     </div> 
     
