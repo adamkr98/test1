@@ -1,4 +1,3 @@
-import { signOut,getAuth } from "firebase/auth"
 import { getDatabase, ref, get } from 'firebase/database';
 import { database } from './../fbconfig';
 import { useState, useEffect } from "react";
@@ -8,14 +7,7 @@ const db = getDatabase();
 const vegetablesRef = ref(db, 'categories/1/products');
 
 export function Vegetables(){
-    const auth = getAuth()
-    async function handleSignOut(){
-        try {
-            await signOut(auth);
-        } catch (error) {
-            console.log(error)
-        }
-    }
+  
 
 
     const [vegetablesData, setVegetablesData] = useState(null);
@@ -66,14 +58,13 @@ export function Vegetables(){
                                 <p>Date Harvested: {vegetable.dateHarvested}</p>
                                 <p>Quantity: {vegetable.quantity}</p>
                                 
-                                {/* Render other vegetable details */}
+                                
                             </div>
                         </div>
                     );
                 })}
             </div>
 
-        <button onClick={() => {handleSignOut()}}>Sign Out</button>
     </div> 
     </div>
     )

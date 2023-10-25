@@ -2,6 +2,7 @@ import './App.css'
 import Signin from './Routes/Signin'
 import Signup from './Routes/Signup'
 import Navbar from './Navbar'
+import Footer from './Routes/Footer'
 import { Vegetables } from './Routes/Vegetables'
 import { Fruits } from './Routes/Fruits'
 import { Meat } from './Routes/Meat'
@@ -17,6 +18,7 @@ const HeaderLayout = () => (
   <>
     <Navbar />
     <Outlet />
+    <Footer />
   </>
 );
 

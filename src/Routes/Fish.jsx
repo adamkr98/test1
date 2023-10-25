@@ -1,4 +1,3 @@
-import { signOut,getAuth } from "firebase/auth"
 import { getDatabase, ref, get } from 'firebase/database';
 import { database } from './../fbconfig';
 import { useState, useEffect } from "react";
@@ -6,18 +5,10 @@ import { Link } from "react-router-dom";
 
 
 const db = getDatabase();
-const fishRef = ref(db, 'categories/3/products');
+const fishRef = ref(db, 'categories/2/products');
 
 export function Fish(){
-    const auth = getAuth()
-    async function handleSignOut(){
-        try {
-            await signOut(auth);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
+    
 
     const [fishData, setFishData] = useState(null);
 
@@ -67,14 +58,13 @@ export function Fish(){
                                 <p>Date Harvested: {fish.dateHarvested}</p>
                                 <p>Quantity: {fish.quantity}</p>
                                 
-                                {/* Render other vegetable details */}
+                               
                             </div>
                         </div>
                     );
                 })}
             </div>
 
-        <button onClick={() => {handleSignOut()}}>Sign Out</button>
     </div> 
     </div>
     )

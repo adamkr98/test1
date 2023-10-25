@@ -1,15 +1,7 @@
-import { signOut,getAuth } from "firebase/auth"
 import { Link } from "react-router-dom";
 
 export const Categories = () =>{
-    const auth = getAuth()
-    async function handleSignOut(){
-        try {
-            await signOut(auth);
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    
     return (
     <div>
         <div className="h-[80vh] flex flex-wrap justify-around">
@@ -62,7 +54,6 @@ export const Categories = () =>{
                     </p>
                 </div>
             </div>
-        <button onClick={() => {handleSignOut()}}>Sign Out</button>
     </div> 
     
     )
