@@ -73,7 +73,9 @@ function App() {
 
       <RouterProvider router={router}>
         <Navbar />
+        <Footer />
       </RouterProvider>
+      
     </AuthContext>
   )
 }

@@ -1,18 +1,21 @@
 import { useState } from "react"
 import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth'
+import { useNavigate } from "react-router-dom"
 
 
 const Signup = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const auth = getAuth()
+    const navigate = useNavigate()
+
     async function handleSignUp(e){
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email,password)
     .then((user) => {
         // Success...
         console.log(user)
-        //...
+        navigate('/categories')
     })
     .catch((error) => {
         // Error
@@ -37,7 +40,7 @@ const Signup = () => {
                     <option value="">Seller</option>
                  </select>
 
-                 <button onClick={(e) => {handleSignUp(e)}} className="bg bg-[#d4d700] text-white rounded-md w-[30%] pt-1 pb-1" >Sign In</button>
+                 <button onClick={(e) => {handleSignUp(e)}} className="bg bg-[#d4d700] text-white rounded-md w-[30%] pt-1 pb-1" >Sign Up</button>
              </div>
          </form>
         </div>

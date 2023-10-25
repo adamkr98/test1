@@ -7,20 +7,24 @@ import {getAuth, signOut, onAuthStateChanged} from 'firebase/auth'
 
 const Navbar = () => {
 
+  
+
+
+  const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
+  const [showProfile, setShowProfile] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
+
+
+
   const auth = getAuth()
   async function handleSignOut(){
       try {
           await signOut(auth);
+          setShowDropDown(false)
+          
       } catch (error) {
           console.log(error)
       }
-  }
-
-
-  const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
-
-  const hideLoginSignin = (setRegisterLoginVisible) => {
-    setRegisterLoginVisible(false)
   }
 
   useEffect(() => {
@@ -37,6 +41,23 @@ const Navbar = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setShowProfile(true);
+      } else {
+        setShowProfile(false);
+      }
+    });
+  }, [])
+
+
+  const showDropDownMenu = () => {
+    setShowDropDown(true)
+  }
 
   return (
     <>
@@ -64,13 +85,31 @@ const Navbar = () => {
                   <Link to="/signin">
                     LogIn
                   </Link>
-                  </button>
+                </button>
               </div>
             </div>
           )}
-          {!registerLoginVisible && (
+          {/* {!registerLoginVisible && (
             <button className='mr-4' onClick={() => {handleSignOut()}}>Sign Out</button>
+          )} */}
+
+          {showProfile && (
+            <p className='w-[4rem]' onClick={() => {showDropDownMenu()}}>profile</p>
           )}
+
+          {showDropDown && (
+            <div className='w-full absolute'>
+              <div className='w-full h-[50vh] bg bg-white mt-[14vh] flex flex-col items-center'>
+                <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
+                  <p>Profile</p>
+                </div>
+                <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
+                  <p onClick={() => {handleSignOut()}}>LogOut</p>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
       </div>
     </>

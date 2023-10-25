@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 export const Categories = () =>{
     
     return (
-    <div>
-        <div className="h-[80vh] flex flex-wrap justify-around">
-                <div className="w-[20rem] ml-4 mb-4 flex flex-col items-center justify-center">
+    <>
+        <div className="flex flex-wrap justify-around">
+                <div className="w-[20rem] mt-4 ml-4 mb-4 flex flex-col items-center justify-center">
                     <Link to="/vegetables">
                         <img
                         src="https://source.unsplash.com/TmjyLCUpcDY"
@@ -49,12 +49,12 @@ export const Categories = () =>{
                         className='rounded-md hover:scale-105 cursor-pointer shadow-xl'
                         />
                     </Link>
-                    <p className='mt-8 text-2xl'>
+                    <p className='mt-8 mb-8 text-2xl'>
                         Fish
                     </p>
                 </div>
             </div>
-    </div> 
+    </> 
     
     )
     
