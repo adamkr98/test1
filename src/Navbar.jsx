@@ -50,7 +50,6 @@ const Navbar = () => {
         <div className="w-full flex justify-end">
           <ul className="w-[50%] flex justify-end">
             <li className="w-11 mr-8 flex justify-center items-center">About</li>
-            <li className="w-11 mr-8 flex justify-center items-center">Contact</li>
           </ul>
 
           {registerLoginVisible && (
