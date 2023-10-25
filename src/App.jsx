@@ -9,6 +9,8 @@ import { Meat } from './Routes/Meat'
 import { Fish } from './Routes/Fish'
 import { Home } from './Routes/Home'
 import { Categories } from './Routes/Categories'
+import  Profile  from './Routes/Profile'
+
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { AuthContext } from './Context/AuthContext'
 import { Protected } from './Routes/Protected'
@@ -63,6 +65,10 @@ const router = createBrowserRouter([
         path: '/fish',
         element: <Protected><Fish /></Protected>
       },
+      {
+        path: '/profile',
+        element: <Protected><Profile /></Protected>
+      }
     ]
   }
 ])

@@ -1,3 +1,4 @@
+import { signOut,getAuth } from "firebase/auth"
 import { getDatabase, ref, get } from 'firebase/database';
 import { database } from './../fbconfig';
 import { useState, useEffect } from "react";

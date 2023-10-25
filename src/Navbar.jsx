@@ -14,7 +14,9 @@ const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
 
-
+  // window.document.addEventListener('click', () => {
+  //   hideDropDownMenu()
+  // })
 
   const auth = getAuth()
   async function handleSignOut(){
@@ -56,8 +58,11 @@ const Navbar = () => {
 
 
   const showDropDownMenu = () => {
-    setShowDropDown(true)
+      setShowDropDown(true)
   }
+  
+
+  
 
   return (
     <>
@@ -101,7 +106,9 @@ const Navbar = () => {
             <div className='w-full absolute'>
               <div className='w-full h-[50vh] bg bg-white mt-[14vh] flex flex-col items-center'>
                 <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
-                  <p>Profile</p>
+                  <Link to="/profile">
+                    Profile
+                  </Link>
                 </div>
                 <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
                   <p onClick={() => {handleSignOut()}}>LogOut</p>

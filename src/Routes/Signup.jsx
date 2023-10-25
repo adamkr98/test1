@@ -15,6 +15,7 @@ const Signup = () => {
     .then((user) => {
         // Success...
         console.log(user)
+        alert
         navigate('/categories')
     })
     .catch((error) => {
