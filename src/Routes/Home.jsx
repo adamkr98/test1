@@ -34,11 +34,13 @@ export function Home(){
     <p className='w-fit h-fit text-white text-3xl mb-8'>
         Your journey begins Here!
     </p>
-    <button onClick={handleJoinsUsClick} className='border border-white text-white text-xl p-2 rounded-md hover:bg-white hover:text-[#606C38]'>
-        <Link to="/register">
-        Join Us!
-        </Link>
-    </button>
+    <Link to="/register">
+        <button onClick={handleJoinsUsClick} className='border border-white text-white text-xl p-2 rounded-md hover:bg-white hover:text-[#606C38]'>
+            
+            Join Us!
+        
+        </button>
+    </Link>
 </div>
 
 <div className='h-fit bg-[#f0f1f4] pt-8 flex flex-wrap justify-around items-center'>
