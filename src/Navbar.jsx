@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import Login from './Routes/Signin';
 import SignIn from './Routes/Signup'; 
-import { Link,  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {getAuth, signOut, onAuthStateChanged} from 'firebase/auth'
+import { Context } from './Context/AuthContext';
 
 
 
@@ -10,10 +11,13 @@ const Navbar = () => {
 
   
   const profile = useRef();
+  const { user } = useContext(Context)
 
   const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
   const [showProfile, setShowProfile] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+
+  const navigate = useNavigate();
 
   window.document.addEventListener('click', (event) => {
     if(event.target.innerText != "profile") {
@@ -62,14 +66,19 @@ const Navbar = () => {
   }
   
 
-  
+  const LogoRoute = () => {
+
+    if(user) {
+      navigate('/categories')
+    }
+  }
 
   return (
     <>
       <div className="w-full h-[10vh] flex justify-center shadow">
         <div className="w-[30%] pl-2 pr-2 sm:w-[30%] md:w-[10%] flex justify-start">
           <p className="w-fit flex justify-center items-center">
-            <Link to="/">foodMates</Link>
+            <p onClick={LogoRoute}>foodMates</p>
           </p>
         </div>
 
