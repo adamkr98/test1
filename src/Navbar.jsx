@@ -25,16 +25,16 @@ const Navbar = () => {
     }
   })
 
-  const auth = getAuth()
-  async function handleSignOut(){
-      try {
-          await signOut(auth);
-          setShowDropDown(false)
+  // const auth = getAuth()
+  // async function handleSignOut(){
+  //     try {
+  //         await signOut(auth);
+  //         setShowDropDown(false)
           
-      } catch (error) {
-          console.log(error)
-      }
-  }
+  //     } catch (error) {
+  //         console.log(error)
+  //     }
+  // }
 
   useEffect(() => {
     const auth = getAuth();
@@ -61,15 +61,17 @@ const Navbar = () => {
   }, [])
 
 
-  const showDropDownMenu = () => {
-      setShowDropDown(true)
-  }
+  // const showDropDownMenu = () => {
+  //     setShowDropDown(true)
+  // }
   
 
   const LogoRoute = () => {
 
     if(user) {
       navigate('/categories')
+    } else {
+      navigate('/')
     }
   }
 

@@ -1,5 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { getDatabase, ref, child, get } from "firebase/database";
+import { getAuth, signOut } from 'firebase/auth'
+
+
 import { Context } from '../Context/AuthContext'; 
 
 
@@ -37,6 +40,16 @@ get(child(dbRef, `users/${userID}`)).then((snapshot) => {
   console.error(error);
 });
 
+const auth = getAuth()
+  async function handleSignOut(){
+      try {
+          await signOut(auth);
+          
+          
+      } catch (error) {
+          console.log(error)
+      }
+  }
   
 
   return (
@@ -46,26 +59,31 @@ get(child(dbRef, `users/${userID}`)).then((snapshot) => {
     
     <div className='w-full h-[80vh] flex justify-center items-center'>
       <div className='w-[90%] h-[70vh] flex'>
-        <div className='w-[20%] h-full bg-gray-200'>
+        <div className='w-[20%] h-full bg-[#588157]'>
 
-          <div className='border border-2 w-full h-[3rem] flex justify-center items-center'>
-            <p className='w-fit text-xl'>
+          <div className='w-full h-[3rem] flex justify-center items-center'>
+            <p className='w-fit text-xl text-white'>
               Credentials
             </p>
           </div>
-          <div className='border border-2 w-full h-[3rem] flex justify-center items-center'>
-            <p className='w-fit text-xl'>
+          <div className='w-full h-[3rem] flex justify-center items-center'>
+            <p className='w-fit text-xl text-white'>
               Purchased
             </p>
           </div>
-          <div className='border border-2 w-full h-[3rem] flex justify-center items-center'>
-            <p className='w-fit text-xl'>
+          <div className='w-full h-[3rem] flex justify-center items-center'>
+            <p className='w-fit text-xl text-white'>
               Favorites
             </p>
           </div>
-          <div className='border border-2 w-full h-[3rem] flex justify-center items-center'>
-            <p className='w-fit text-xl'>
+          <div className='w-full h-[3rem] flex justify-center items-center'>
+            <p className='w-fit text-xl text-white'>
               Messages
+            </p>
+          </div>
+          <div className='w-full h-[3rem] flex justify-center items-center'>
+            <p className='w-fit text-xl cursor-pointer text-white' onClick={() => {handleSignOut()}}>
+              Logout
             </p>
           </div>
         </div>
@@ -80,7 +98,7 @@ get(child(dbRef, `users/${userID}`)).then((snapshot) => {
               <input type="text" value={userName} />
               </div>
 
-              <div className='border border-4 w-[10rem] h-[10rem] rounded-full'>
+              <div className='border border-[green] border-4 w-[10rem] h-[10rem] rounded-full'>
               </div>
             </div>
 

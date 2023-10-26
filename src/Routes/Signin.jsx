@@ -15,7 +15,7 @@ const Signin = () => {
     signInWithEmailAndPassword(auth,email,password)
     .then((user) => {
         // Success...
-        alert('User loggedIn!')
+        // alert('User loggedIn!')
         console.log(user)
         navigate('/categories')
         //...
