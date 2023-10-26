@@ -78,7 +78,7 @@ const Navbar = () => {
       <div className="w-full h-[10vh] flex justify-center shadow">
         <div className="w-[30%] pl-2 pr-2 sm:w-[30%] md:w-[10%] flex justify-start">
           <p className="w-fit flex justify-center items-center">
-            <p onClick={LogoRoute}>foodMates</p>
+            <p onClick={LogoRoute} className='cursor-pointer'>foodMates</p>
           </p>
         </div>
 
@@ -108,23 +108,34 @@ const Navbar = () => {
           )} */}
         
           {showProfile && (
-            <p className='w-[4rem]' onClick={() => {showDropDownMenu()}}>profile</p>
+
+            <Link to="/profile">
+             <div className='h-full flex items-center mr-4'>
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="w-12 h-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+             </div>
+
+              {/* <p className='w-[4rem] h-full flex items-center mr-4' onClick={() => {showDropDownMenu()}}>profile</p> */}
+            </Link>
           )}
 
-          {showDropDown && (
-            <div className='w-full absolute'>
-              <div className='w-full h-[50vh] bg bg-white mt-[14vh] flex flex-col items-center'>
+          {/* {showDropDown && ( */}
+            {/* <div className='w-1/5 h-fit absolute rounded-sm'>
+              <div className='w-full h-[50vh] bg bg-white mt-[14vh] shadow-xl flex flex-col items-center'>
+              
                 <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
                   <Link to="/profile" ref={profile}>
-                    Profile
+                      <p className='w-full'>Profil</p>
                   </Link>
                 </div>
+                
                 <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
                   <p onClick={() => {handleSignOut()}}>LogOut</p>
                 </div>
               </div>
-            </div>
-          )}
+            </div> */}
+          {/* )} */}
 
         </div>
       </div>
