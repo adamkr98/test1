@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Login from './Routes/Signin';
 import SignIn from './Routes/Signup'; 
-import { Link } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import {getAuth, signOut, onAuthStateChanged} from 'firebase/auth'
+
 
 
 const Navbar = () => {
 
   
-
+  const profile = useRef();
 
   const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
   const [showProfile, setShowProfile] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
 
-  // window.document.addEventListener('click', () => {
-  //   hideDropDownMenu()
-  // })
+  window.document.addEventListener('click', (event) => {
+    if(event.target.innerText != "profile") {
+      setShowDropDown(false)
+    }
+  })
 
   const auth = getAuth()
   async function handleSignOut(){
@@ -32,13 +35,10 @@ const Navbar = () => {
   useEffect(() => {
     const auth = getAuth();
 
-    // Use onAuthStateChanged to listen for changes in the user's authentication status.
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is logged in, so hide the "Register" and "Login" buttons.
         setRegisterLoginVisible(false);
       } else {
-        // User is not logged in, so show the "Register" and "Login" buttons.
         setRegisterLoginVisible(true);
       }
     });
@@ -97,7 +97,7 @@ const Navbar = () => {
           {/* {!registerLoginVisible && (
             <button className='mr-4' onClick={() => {handleSignOut()}}>Sign Out</button>
           )} */}
-
+        
           {showProfile && (
             <p className='w-[4rem]' onClick={() => {showDropDownMenu()}}>profile</p>
           )}
@@ -106,7 +106,7 @@ const Navbar = () => {
             <div className='w-full absolute'>
               <div className='w-full h-[50vh] bg bg-white mt-[14vh] flex flex-col items-center'>
                 <div className='w-full h-[2.5rem] text-center pt-4 pb-8 border border-b-2 hover:bg hover:bg-gray-200 cursor-pointer'>
-                  <Link to="/profile">
+                  <Link to="/profile" ref={profile}>
                     Profile
                   </Link>
                 </div>
