@@ -28,13 +28,14 @@ export function Fruits(){
     }, []);
 
     return (
-    <div>
-        <div className='w-full flex flex-col items-center'>
-            <div className='w-[90%] h-[10vh] mt-[5vh] flex justify-end items-center'>
-                <h1 className='text-[2rem]'>Fruits</h1>
-            </div>            
+   
+        <div className='w-full bg bg-gray-100'>
+            <div className='w-full flex flex-col items-center'>
+                <div className='w-[90%] h-[10vh] mt-[5vh] flex justify-start items-center'>
+                    <h1 className='text-[2rem]'>Fruits</h1>
+                </div>            
 
-            <div className='w-[90%] h-[15vh] flex flex-col'>
+            <div className='bg bg-white w-full h-[15vh] flex flex-col'>
                 <Link to="/categories">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
@@ -44,22 +45,17 @@ export function Fruits(){
                 <input type="text" placeholder='Search' className='w-[25%] h-[2rem] mt-12 ml-12 pl-4 border-b-2 rounded-md focus:outline-none' />
             </div>
 
-            <div className='w-[90%] h-[52vh] flex justify-center'>
-                {fruitsData && Object.keys(fruitsData).map((fruitsId) => {
+            <div className='bg bg-white flex flex-wrap justify-around'>
+            {fruitsData && Object.keys(fruitsData).map((fruitsId, index) => {
                     const fruits = fruitsData[fruitsId];
                     return (
-                        <div className='w-[100%] h-fit bg bg-gray-100 pt-8 flex justify-center overflow-hidden' key={fruitsId}>
-                            <div key={fruitsId} className='w-full overflow-hidden flex flex-col items-center'>
-
-                                <div className='w-2/4 h-[30vh] flex justify-center'>
-                                    <img src={fruits.imageUrl} alt="" className='object-contain w-full h-full' />
-                                </div>
-                                <h2>{fruits.name}</h2>
-                                <p>Date Harvested: {fruits.dateHarvested}</p>
-                                <p>Quantity: {fruits.quantity}</p>
-                                
-                              
+                        <div key={fruitsId} className='shadow-xl rounded-md w-[20rem] h-[20rem] ml-4 mb-8 h-fit flex flex-col items-center mb-8'>
+                            <div className='w-2/4 h-[30vh] flex justify-center'>
+                                <img src={fruits.imageUrl} alt="" className='object-contain w-full h-full' />
                             </div>
+                            <h2>{fruits.name}</h2>
+                            <p>Date Harvested: {fruits.dateHarvested}</p>
+                            <p>Quantity: {fruits.quantity}</p>
                         </div>
                     );
                 })}
