@@ -33,7 +33,7 @@ export function Vegetables() {
 
                 <div className='bg bg-white w-full h-[15vh] flex flex-col'>
                     <Link to="/categories">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 ml-8">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
                         </svg>
                     </Link>
@@ -41,7 +41,7 @@ export function Vegetables() {
                     <input type="text" placeholder='Search' className='w-[25%] h-[2rem] mt-12 ml-12 pl-4 border-b-2 rounded-md focus:outline-none' />
                 </div>
 
-                <div className='bg bg-white border border-black-400 flex flex-wrap justify-around border border-pink-500'>
+                <div className='w-full bg bg-white border border-black-400 flex flex-wrap justify-around'>
                 {vegetablesData && Object.keys(vegetablesData).map((vegetableId, index) => {
                     const vegetable = vegetablesData[vegetableId];
                     return (

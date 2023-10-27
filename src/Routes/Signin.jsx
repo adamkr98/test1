@@ -1,7 +1,12 @@
-import { useState } from "react"
+import React, { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import Profile from "./Profile"
+import { getDatabase, ref, child, get } from "firebase/database";
+
+import ProfileBuyer from "./ProfileBuyer"
+import ProfileSeller from "./ProfileSeller";
+import { Context } from '../Context/AuthContext'; 
+
 
 const Signin = () => {
     const [email,setEmail] = useState('')
@@ -9,15 +14,50 @@ const Signin = () => {
     const auth = getAuth()
     const navigate = useNavigate();
 
+    const { user } = useContext(Context);
+
+    let userID;
+    let userRole;
+
+    const dbRef = ref(getDatabase());
+
+    
+
+
     async function handleSignIn(e){
         e.preventDefault();
 
     signInWithEmailAndPassword(auth,email,password)
     .then((user) => {
-        // Success...
-        // alert('User loggedIn!')
-        console.log(user)
-        navigate('/categories')
+        userID = user.user.uid;
+        
+        
+        get(child(dbRef, `users/${userID}`)).then((snapshot) => {
+            if (snapshot.exists()) {
+              let userData= snapshot.val();
+    
+              const role = userData.role
+              console.log(role);
+
+              if (role === "Buyer") {
+                navigate('/categories')
+              } else if (role === 'Seller') {
+                navigate('/profileSeller')
+              } else {
+                console.error("role doesn't exist!!");
+              }
+              
+            } else {
+                console.log("No data available");
+              }
+            }).catch((error) => {
+              console.error(error);
+            });
+
+
+
+        console.log(userID)
+        
         //...
     })
     .catch((error) => {

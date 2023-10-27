@@ -9,7 +9,8 @@ import { Meat } from './Routes/Meat'
 import { Fish } from './Routes/Fish'
 import { Home } from './Routes/Home'
 import { Categories } from './Routes/Categories'
-import  Profile  from './Routes/Profile'
+import  ProfileBuyer  from './Routes/ProfileBuyer'
+import ProfileSeller from './Routes/ProfileSeller'
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 import { AuthContext } from './Context/AuthContext'
@@ -66,8 +67,12 @@ const router = createBrowserRouter([
         element: <Protected><Fish /></Protected>
       },
       {
-        path: '/profile',
-        element: <Protected><Profile /></Protected>
+        path: '/profileBuyer',
+        element: <Protected><ProfileBuyer /></Protected>
+      },
+      {
+        path: '/profileSeller',
+        element: <Protected><ProfileSeller /></Protected>
       }
     ]
   }

@@ -1,9 +1,12 @@
-import { useState } from "react"
+import React, { useState, useContext } from "react"
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { getDatabase, ref, set } from 'firebase/database'
+import { getDatabase, ref, set, child, get } from 'firebase/database'
 import { useNavigate } from "react-router-dom"
+import { Context } from '../Context/AuthContext'; 
 
-import Profile from "./Profile"
+
+import ProfileBuyer from "./ProfileBuyer"
+import ProfileSeller from "./ProfileSeller";
 
 
 
@@ -13,6 +16,12 @@ const Signup = () => {
     const [username, setUsername] = useState('')
     const [role, setRole] = useState('Buyer')
     const [imageUrl, setImageUrl] = useState('')
+
+    const { user } = useContext(Context);
+
+    let userID;
+
+    const dbRef = ref(getDatabase());
 
     const auth = getAuth()
     const navigate = useNavigate()
@@ -35,7 +44,31 @@ const Signup = () => {
 
         writeUserData(user.user.uid, username, email, role, imageUrl);
         alert("You're logged in!")
-        navigate('/categories')
+
+        userID = user.user.uid;
+        
+        
+        get(child(dbRef, `users/${userID}`)).then((snapshot) => {
+            if (snapshot.exists()) {
+              let userData= snapshot.val();
+    
+              const role = userData.role
+              console.log(role);
+
+              if (role === "Buyer") {
+                navigate('/categories')
+              } else if (role === 'Seller') {
+                navigate('/profileSeller')
+              } else {
+                console.error("role doesn't exist!!");
+              }
+              
+            } else {
+                console.log("No data available");
+              }
+            }).catch((error) => {
+              console.error(error);
+            });
     })
     .catch((error) => {
         console.log(error)

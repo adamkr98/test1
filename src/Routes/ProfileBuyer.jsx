@@ -3,6 +3,7 @@ import { getDatabase, ref, child, get } from "firebase/database";
 import { getAuth, signOut } from 'firebase/auth'
 
 
+
 import { Context } from '../Context/AuthContext'; 
 
 
@@ -10,7 +11,7 @@ export default function Profile() {
 
   const { user } = useContext(Context);
 
-  const userID = user.uid
+  const userID = user.uid;
 
   const dbRef = ref(getDatabase());
 
@@ -21,7 +22,7 @@ export default function Profile() {
   
 get(child(dbRef, `users/${userID}`)).then((snapshot) => {
   if (snapshot.exists()) {
-    const userData= snapshot.val();
+    let userData= snapshot.val();
 
     const userName = userData.username
     const email = userData.email
@@ -44,7 +45,6 @@ const auth = getAuth()
   async function handleSignOut(){
       try {
           await signOut(auth);
-          
           
       } catch (error) {
           console.log(error)

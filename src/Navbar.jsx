@@ -4,6 +4,8 @@ import SignIn from './Routes/Signup';
 import { Link, useNavigate } from 'react-router-dom';
 import {getAuth, signOut, onAuthStateChanged} from 'firebase/auth'
 import { Context } from './Context/AuthContext';
+import { getDatabase, ref, child, get } from "firebase/database";
+
 
 
 
@@ -16,6 +18,10 @@ const Navbar = () => {
   const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
   const [showProfile, setShowProfile] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
+  const [buyerProfile, setBuyerProfile] = useState(false);
+  const [sellerProfile, setSellerProfile] = useState(false);
+  const [role, setRole] = useState('');
+
 
   const navigate = useNavigate();
 
@@ -24,6 +30,15 @@ const Navbar = () => {
       setShowDropDown(false)
     }
   })
+
+  useEffect(() => {
+    // Check the user's role and set the "isProfileVisible" state
+    if (user && user.role === 'Buyer') {
+      setBuyerProfile(true);
+    } else if (user && user.role === 'Seller') {
+      setSellerProfile(true);
+    } 
+  }, [user]);
 
   // const auth = getAuth()
   // async function handleSignOut(){
@@ -48,15 +63,45 @@ const Navbar = () => {
     });
   }, []);
 
+
+ 
+
+  const dbRef = ref(getDatabase());
+
   useEffect(() => {
     const auth = getAuth();
 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setShowProfile(true);
-      } else {
-        setShowProfile(false);
-      }
+
+      const userID = user.uid;
+      get(child(dbRef, `users/${userID}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          let userData= snapshot.val();
+      
+         
+          let role = userData.role
+      
+          setRole(role)
+          // setUserName(username)
+          console.log(role);
+          if (user && role === "Buyer") {
+            setShowProfile(true);
+
+          } else if (user && role === "Seller") {
+            setSellerProfile(true);
+            setBuyerProfile(false);
+          } else {
+            setShowProfile(false);
+          }
+      
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
+
+      
     });
   }, [])
 
@@ -68,9 +113,12 @@ const Navbar = () => {
 
   const LogoRoute = () => {
 
-    if(user) {
+    if(user && role === "Buyer") {
       navigate('/categories')
-    } else {
+    } else if (user && role === "Seller") {
+      navigate('/profileSeller')
+    }
+     else {
       navigate('/')
     }
   }
@@ -110,8 +158,8 @@ const Navbar = () => {
           )} */}
         
           {showProfile && (
-
-            <Link to="/profile">
+            
+            <Link to="/profileBuyer">
              <div className='h-full flex items-center mr-4'>
                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="w-12 h-12">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -121,6 +169,36 @@ const Navbar = () => {
               {/* <p className='w-[4rem] h-full flex items-center mr-4' onClick={() => {showDropDownMenu()}}>profile</p> */}
             </Link>
           )}
+
+          {sellerProfile && (
+              <Link to="/profileSeller">
+             <div className='h-full flex items-center mr-4'>
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="w-12 h-12">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+             </div>
+
+              {/* <p className='w-[4rem] h-full flex items-center mr-4' onClick={() => {showDropDownMenu()}}>profile</p> */}
+            </Link>
+            )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* {showDropDown && ( */}
             {/* <div className='w-1/5 h-fit absolute rounded-sm'>
