@@ -84,14 +84,28 @@ const Navbar = () => {
           setRole(role)
           // setUserName(username)
           console.log(role);
-          if (user && role === "Buyer") {
-            setShowProfile(true);
 
-          } else if (user && role === "Seller") {
-            setSellerProfile(true);
-            setBuyerProfile(false);
-          } else {
-            setShowProfile(false);
+          // if (user && role === "Buyer") {
+          //   setShowProfile(true);
+
+          // } else if (user && role === "Seller") {
+          //   setSellerProfile(true);
+          //   setBuyerProfile(false);
+          // } else {
+          //   setShowProfile(false);
+          // }
+          if (user) {
+            let role = userData.role;
+            setRole(role);
+            if (role === "Buyer") {
+              setShowProfile(true);
+              setSellerProfile(false);
+            } else if (role === "Seller") {
+              setSellerProfile(true);
+              setShowProfile(false);
+            } else {
+              setShowProfile(false);
+            }
           }
       
         } else {
@@ -125,7 +139,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full h-[10vh] flex justify-center shadow">
+      <div className="w-full h-[10vh] flex justify-center shadow sticky top-0 z-40">
         <div className="w-[30%] pl-2 pr-2 sm:w-[30%] md:w-[10%] flex justify-start">
           <p className="w-fit flex justify-center items-center">
             <p onClick={LogoRoute} className='cursor-pointer'>foodMates</p>

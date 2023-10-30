@@ -11,8 +11,8 @@ export function Protected({children}){
 
         const userRole = user.role;
 
-        const buyerRoutes = [ "/categories", "/vegetables", "/fruits", "/meat", "/fish" ];
-        const sellerRoutes = []
+        const buyerRoutes = [ "/categories", "/vegetables", "/fruits", "/meat", "/fish", '/profileBuyer' ];
+        const sellerRoutes = [ "/profileSeller" ]
         return children;
     }
 }
