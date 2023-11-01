@@ -15,12 +15,25 @@ const Navbar = () => {
   const profile = useRef();
   const { user } = useContext(Context)
 
+  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [registerLoginVisible, setRegisterLoginVisible] = useState(true)
   const [showProfile, setShowProfile] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [buyerProfile, setBuyerProfile] = useState(false);
   const [sellerProfile, setSellerProfile] = useState(false);
   const [role, setRole] = useState('');
+
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setScreenWidth(window.innerWidth);
+  //   };
+
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, []);
 
 
   const navigate = useNavigate();
@@ -32,7 +45,7 @@ const Navbar = () => {
   })
 
   useEffect(() => {
-    // Check the user's role and set the "isProfileVisible" state
+    
     if (user && user.role === 'Buyer') {
       setBuyerProfile(true);
     } else if (user && user.role === 'Seller') {
@@ -94,12 +107,14 @@ const Navbar = () => {
           // } else {
           //   setShowProfile(false);
           // }
+          
           if (user) {
             let role = userData.role;
             setRole(role);
             if (role === "Buyer") {
               setShowProfile(true);
               setSellerProfile(false);
+
             } else if (role === "Seller") {
               setSellerProfile(true);
               setShowProfile(false);
@@ -139,7 +154,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full h-[10vh] flex justify-center shadow sticky top-0 z-40">
+      <div className="xs:w-full xs:h-[10vh] xs:bg-white w-full h-[10vh] flex justify-center shadow sticky top-0 z-40">
         <div className="w-[30%] pl-2 pr-2 sm:w-[30%] md:w-[10%] flex justify-start">
           <p className="w-fit flex justify-center items-center">
             <p onClick={LogoRoute} className='cursor-pointer'>foodMates</p>
