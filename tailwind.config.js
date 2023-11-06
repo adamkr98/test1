@@ -8,6 +8,13 @@ export default {
     extend: {
      
     },
+    backgroundImage: {
+      'publicPageBg': "url('https://source.unsplash.com/b0IELTWBvT4')",
+      'bg': "src/assets/bovia-co-photography-xYDX2_wDiuQ-unsplash.jpg",
+      'registrationImage': "url('https://source.unsplash.com/-8FjF1p-aw0')"
+      
+    },
+
     screens: {
       'xs': '370px',
       // => @media (min-width: 370px) { ... }

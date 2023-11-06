@@ -11,10 +11,11 @@ import { Home } from './Routes/Home'
 import { Categories } from './Routes/Categories'
 import  ProfileBuyer  from './Routes/ProfileBuyer'
 import ProfileSeller from './Routes/ProfileSeller'
+import  AccessDenied  from './Routes/AccessDenied'
 
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
-import { AuthContext } from './Context/AuthContext'
-import { Protected } from './Routes/Protected'
+import { AuthContextProvider } from './Context/AuthContext'
+import  Protected  from './Routes/Protected'
 
 
 const HeaderLayout = () => (
@@ -43,36 +44,36 @@ const router = createBrowserRouter([
         element: <Signup></Signup>
       },
       {
-        path: "/home",
-        element: <Protected><Home /></Protected>
-      },
-      {
         path: '/categories',
-        element: <Protected><Categories /></Protected>
+        element: <Protected requiredRole="Buyer"><Categories /></Protected>
       },
       {
         path: '/vegetables',
-        element: <Protected><Vegetables /></Protected>
+        element: <Protected requiredRole="Buyer"><Vegetables /></Protected>
       },
       {
         path: '/fruits',
-        element: <Protected><Fruits /></Protected>
+        element: <Protected requiredRole="Buyer"><Fruits /></Protected>
       },
       {
         path: '/meat',
-        element: <Protected><Meat /></Protected>
+        element: <Protected requiredRole="Buyer"><Meat /></Protected>
       },
       {
         path: '/fish',
-        element: <Protected><Fish /></Protected>
+        element: <Protected requiredRole="Buyer"><Fish /></Protected>
       },
       {
         path: '/profileBuyer',
-        element: <Protected><ProfileBuyer /></Protected>
+        element: <Protected requiredRole="Buyer"><ProfileBuyer /></Protected>
       },
       {
         path: '/profileSeller',
-        element: <Protected><ProfileSeller /></Protected>
+        element: <Protected requiredRole="Seller"><ProfileSeller /></Protected>
+      },
+      {
+        path: '/accessDenied',
+        element: <AccessDenied />
       }
     ]
   }
@@ -80,14 +81,14 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthContext>
+    <AuthContextProvider>
 
       <RouterProvider router={router}>
         <Navbar />
         <Footer />
       </RouterProvider>
       
-    </AuthContext>
+    </AuthContextProvider>
   )
 }
 

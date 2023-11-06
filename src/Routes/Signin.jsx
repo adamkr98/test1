@@ -1,71 +1,49 @@
-import React, { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
-import { getDatabase, ref, child, get } from "firebase/database";
-
-import ProfileBuyer from "./ProfileBuyer"
-import ProfileSeller from "./ProfileSeller";
-import { Context } from '../Context/AuthContext'; 
-
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../Context/AuthContext';
+import { getDatabase, ref, get } from 'firebase/database';
 
 const Signin = () => {
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const auth = getAuth()
-    const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
 
-    const { user } = useContext(Context);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const userCredential = await signIn(email, password);
+      
+      const user = userCredential.user;
 
-    let userID;
-    let userRole;
+      const database = getDatabase();
+      const userRef = ref(database, `users/${user.uid}`);
+      const snapshot = await get(userRef);
 
-    const dbRef = ref(getDatabase());
+      if(snapshot.exists()) {
+        const userData = snapshot.val();
+        const userRole = userData.role;
 
-    
+        if (userRole === "Seller") {
+          navigate('/profileSeller');
+          
+        } else if (userRole === "Buyer") {
+          navigate('/profileBuyer');
+        } else {
+          console.log('Role not found!');
+        }
 
-
-    async function handleSignIn(e){
-        e.preventDefault();
-
-    signInWithEmailAndPassword(auth,email,password)
-    .then((user) => {
-        userID = user.user.uid;
-        
-        
-        get(child(dbRef, `users/${userID}`)).then((snapshot) => {
-            if (snapshot.exists()) {
-              let userData= snapshot.val();
-    
-              const role = userData.role
-              console.log(role);
-
-              if (role === "Buyer") {
-                navigate('/categories')
-              } else if (role === 'Seller') {
-                navigate('/profileSeller')
-              } else {
-                console.error("role doesn't exist!!");
-              }
-              
-            } else {
-                console.log("No data available");
-              }
-            }).catch((error) => {
-              console.error(error);
-            });
-
-
-
-        console.log(userID)
-        
-        //...
-    })
-    .catch((error) => {
-        // Error
-        console.log(error)
-        alert('The email or/and password are incorrect!')
-    })
+      } else {
+        console.log('User data not found!');
+      }
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
     }
+  };
+    
 
     return (
     <div className="w-full h-[75vh] flex justify-center items-center mt-[5vh]">
@@ -78,13 +56,13 @@ const Signin = () => {
 
             <h1 className="text-white text-xl">Hello Again!</h1>
 
-                <form action="#" className="w-[90%] flex flex-col items-center pt-4">
+                <form onSubmit={handleSubmit} action="#" className="w-[90%] flex flex-col items-center pt-4">
 
                     <div className="w-full h-fit flex flex-col items-center">
 
                         <input onChange={(e) => {setEmail(e.target.value)}} type="text" placeholder="Email" className="bg bg-white text-black placeholder-[#2d6a4f] w-[90%] h-[2.5rem] mb-4 pl-4" />
                         <input onChange={(e) => {setPassword(e.target.value)}} type="text" placeholder="Password" className="bg bg-white text-black placeholder-[#2d6a4f] w-[90%] h-[2.5rem] mb-4 pl-4" />
-                        <button onClick={(e) => {handleSignIn(e)}} className="bg bg-[#d4d700] text-white rounded-md w-[30%] pt-2 pb-2" >Sign In</button>
+                        <button onClick={(e) => {handleSubmit(e)}} className="bg bg-[#d4d700] text-white rounded-md w-[30%] pt-2 pb-2" >Sign In</button>
                     </div>
                 </form>
             </div>
