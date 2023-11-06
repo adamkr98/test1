@@ -2,13 +2,43 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { UserAuth } from './Context/AuthContext';  
 import { getDatabase, ref, get } from 'firebase/database';
+import { getAuth, signOut } from 'firebase/auth'
+
 
 
 
 const Navbar = () => {
 
   const [ userRole, setUserRole ] = useState('')
+  const [ dropdownProfile, setDropdownProfile ] = useState(false);
   const { user } = UserAuth();
+
+  const auth = getAuth()
+  async function handleSignOut(){
+      try {
+        await signOut(auth);
+        setDropdownProfile(false)
+        
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
+  
+  // const showDropdownProfile = () => {
+  //   if (dropdownProfile === false && innerWidth <= 500) {
+  //     setDropdownProfile(true);
+  //   } else if (dropdownProfile === true || innerWidth >=500) {
+  //     setDropdownProfile(false);
+  //   }
+  // };
+  
+
+  
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', showDropdownProfile);
+  // }, [dropdownProfile])
 
   useEffect(() => {
     if (user) {
@@ -50,10 +80,10 @@ const Navbar = () => {
         </ul>
 
         {user ? (
-          
+          // onClick={showDropdownProfile}
           <>
             <Link to={'/profile' + `${userRole}`}>
-              <div className='h-full flex items-center mr-4'>
+              <div  className='h-full flex items-center mr-4'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="w-12 h-12">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
@@ -75,6 +105,23 @@ const Navbar = () => {
                   LogIn
                 </Link>
               </button>
+            </div>
+          </div>
+        )}
+        {dropdownProfile && (
+          <div className='absolute top-20 right-0 bg-white shadow-md w-[10rem] h-fit'>
+            <div className='w-full h-[3rem] border-b-2 border-gray flex justify-center items-center'>
+              <p>
+                Profile
+              </p>
+            </div>
+            <div className='w-full h-[3rem] border-b-2 border-gray flex justify-center items-center'>
+
+            </div>
+            <div onClick={handleSignOut} className='w-full h-[3rem] flex justify-center items-center'>
+              <p>
+                Logout
+              </p>
             </div>
           </div>
         )}

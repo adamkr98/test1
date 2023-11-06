@@ -31,7 +31,7 @@ export function Home(){
         <div className='w-full h-fit flex flex-col contrast-70'>
             
         <div className='w-full h-[70vh] bg-cover bg-no-repeat bg-publicPageBg flex flex-col justify-center items-center'>
-            <p className='w-fit h-fit text-white text-[3rem] mb-8'>
+            <p className='w-fit h-fit text-white text-center text-[3rem] mb-8'>
                 Your journey begins Here!
             </p>
             <Link to="/register">
@@ -47,31 +47,31 @@ export function Home(){
                 <p className="w-fit text-[##293E39] text-[2rem] mt-12 mb-12">
                     Who we ARE?       
                 </p>
-                <p className="w-1/2 text-center text-lg">
+                <p className="xs:w-[85%] lg:w-1/2 text-center text-lg">
                 Welcome to FoodMates - Where Community and Fresh Food Unite!<br />
 
                 At FoodMates, we're more than just an online marketplace. We're a vibrant community hub, connecting local farmers, artisans, and food lovers in a shared celebration of fresh, locally sourced produce.
 
                 
                 </p>
-                <h2 className="text-[2rem] mt-12 mb-12">
+                <h2 className="xs:w-[85%] text-[2rem] text-center mt-12 mb-12">
                     A place for local Producers and Consumers
                 </h2>
 
-                <p className="w-1/2 text-center text-lg mb-12">
+                <p className="xs:w-[85%] lg:w-1/2 text-center text-lg mb-12">
                 A Gathering Place for Local Producers:
                 Local farmers, fishermen, and culinary artisans are at the heart of FoodMates. They proudly showcase their farm-fresh vegetables, fruits, meat, and fish, creating a direct link between you and the flavors of your region.<br />
                 
                 </p>
-                <p className="w-1/2 text-center text-lg mb-12">
+                <p className="xs:w-[85%] lg:w-1/2 text-center text-lg mb-12">
                     A Community of Food Enthusiasts:
                     For those who cherish the connections between food and community, FoodMates is a virtual meeting point. Discover a wide array of offerings, engage in lively discussions, and take part in local food events. By supporting local producers, you become a vital part of the community's culinary tapestry.
 
                 </p>
-                <p className="w-1/2 text-center text-lg mb-12">
+                <p className="xs:w-[85%] lg:w-1/2 text-center text-lg mb-12">
                 Experience the unity of community and fresh, local flavors at FoodMates. Join us now to support local businesses, savor the community spirit, and be part of the local food movement!
                 </p>
-                <p className="w-1/2 text-center text-[2rem] mb-12">
+                <p className="xs:w-[85%] lg:w-1/2 text-center text-[2rem] mb-12">
                     How it works
                 </p>
             </div>

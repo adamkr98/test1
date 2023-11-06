@@ -46,19 +46,22 @@ const Signin = () => {
     
 
     return (
-    <div className="w-full h-[75vh] flex justify-center items-center mt-[5vh]">
-        <div className="w-[40%]">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure asperiores obcaecati odio impedit possimus, dolor quos dicta molestias amet, aperiam aliquid quas, dolores fugit libero placeat vel eaque fuga dolore.</p>
+    <div className="xs:w-full xs:flex sm:w-full sm:flex sm:justify-center lg:w-full xs:h-[80vh] lg:h-[75vh] lg:flex  lg:justify-center lg:items-center lg:mt-[5vh]">
+        <div className="xs:hidden sm:w-[90%] lg:w-[40%] sm:flex md:flex lg:items-center md:items-center lg:flex">
+          <div className="w-full h-[80vh] bg-registrationImage bg-cover">
+          
+          </div>
         </div>
-        <div className="bg bg-[#588157] w-[40%] flex justify-center items-center rounded-md">
+        
+        <div className="bg bg-[#588157] xs:w-full xs:h-[80vh] lg:w-[40%] flex justify-center xs:items-start items-center lg:rounded-r-md">
       
-            <div className="w-2/3 h-[60vh] flex flex-col items-center justify-center">
+            <div className="xs:w-[90%] w-2/3 h-[60vh] flex flex-col items-center justify-center">
 
             <h1 className="text-white text-xl">Hello Again!</h1>
 
-                <form onSubmit={handleSubmit} action="#" className="w-[90%] flex flex-col items-center pt-4">
+                <form onSubmit={handleSubmit} action="#" className="w-full flex flex-col items-center pt-4">
 
-                    <div className="w-full h-fit flex flex-col items-center">
+                    <div className="xs:w-full h-fit flex flex-col items-center">
 
                         <input onChange={(e) => {setEmail(e.target.value)}} type="text" placeholder="Email" className="bg bg-white text-black placeholder-[#2d6a4f] w-[90%] h-[2.5rem] mb-4 pl-4" />
                         <input onChange={(e) => {setPassword(e.target.value)}} type="text" placeholder="Password" className="bg bg-white text-black placeholder-[#2d6a4f] w-[90%] h-[2.5rem] mb-4 pl-4" />

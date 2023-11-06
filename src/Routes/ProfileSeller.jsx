@@ -60,7 +60,7 @@ const ProfileSeller = () => {
       
       
       
-      
+   
       
       
 
@@ -155,7 +155,7 @@ const ProfileSeller = () => {
         <div className='xs:w-full xs:h-fit xs:flex xs:flex-col xs:items-center lg:w-full lg:h-[70vh] lg:flex-row lg:justify-between lg:mt-[10vh]'>
            
                 {/* <div className='sm:w-3/4 sm:h-[10vh] md:w-1/4 md:h-[80vh] md:z-0 md:flex md:flex-col md:ml-24'> */}
-                <div className='xs:3/4 xs:flex xs:flex-col xs:items-center lg:w-[20rem] lg:h-[60vh] lg:flex'>
+                <div className='xs:3/4 xs:flex xs:flex-col xs:items-center lg:w-[25rem] lg:h-[60vh] lg:flex lg:pl-12'>
 
                     <div className='xs:w-[10rem] xs:h-[10rem] xs:rounded-full xs:mt-4 xs:mb-4 md:w-[10rem] md:h-[10rem] md:rounded-full lg:w-[7rem] lg:h-[7rem] lg:rounded-full border border-green-700 md:mb-20 lg:mb-10'></div>
 
@@ -166,7 +166,7 @@ const ProfileSeller = () => {
                     <p className='w-fit'>
                         Christopher Jones
                     </p>
-                    <p className='xs:w-[80%] xs:text-center xs:mb-4 w-[80%] text-start mt-4'>
+                    <p className='xs:w-[80%] xs:text-center xs:mb-4 lg:w-[90%] text-start mt-4'>
                     Discover a taste of local goodness at Veggies. From fresh produce to gourmet treats, we bring you the best our community has to offer. Shop local, eat fresh!
                     </p>
 
@@ -257,12 +257,12 @@ const ProfileSeller = () => {
                                 FRUITS
                             </p>
                         </div>
-                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-meatSectionImage flex justify-center items-center'>
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-meatSectionImage flex justify-center items-center hover:cursor-pointer'>
                             <p className='w-full text-[2rem] text-center bg-white'>
                                 MEAT
                             </p>
                         </div>
-                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-fishSectionImage flex justify-center items-center'>
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-fishSectionImage flex justify-center items-center hover:cursor-pointer'>
                             <p className='w-full text-[2rem] text-center bg-white'>
                                 FISH
                             </p>
@@ -351,153 +351,137 @@ const ProfileSeller = () => {
                             )}
 
                 {MySales && (
-                    <div className='w-full h-[70vh] flex flex-wrap justify-center gap-5 overflow-y-scroll gap-20'>
+                    <div className='xs-w:full xs:h-[75vh] xs:flex xs:flex-wrap xs:items-center xs:justify-center xs:mt-4 w-full h-[70vh] flex flex-wrap gap-5 overflow-y-scroll gap-20 lg:w-full lg:h-[56vh] lg:mt-12'>
                         
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-green-400'>
-
-                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
                         
-                    </div>
+                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                        
+                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                        
+                        </div>
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                        </div>
+                    
+                    
+                </div>
                     )}
                 
                 {MyMessages && (
-                    <div className='w-full h-[70vh] flex overflow-y-scroll'>
+                    <div className='border-2 w-full h-[70vh] overflow-y-scroll lg:flex '>
                         <div className='w-1/4 h-[90vh] flex flex-col'>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Sarah Johnson
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Christopher Jones
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                 Christopher Jones
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Daniel Anderson
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Olivia Miller
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Sarah Johnson
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Christopher Jones
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                 Christopher Jones
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Daniel Anderson
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Olivia Miller
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Sarah Johnson
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     John Smith
                                 </p>
                             </div>
-                            <div className='w-[20rem] h-[3rem] border border-2 flex justify-center
+                            <div className='w-[16rem] h-[3rem] border border-2 flex justify-center
                             items-center'>
                                 <p>
                                     Sarah Johnson
@@ -510,8 +494,8 @@ const ProfileSeller = () => {
                             <div className='w-full'>
 
                             </div>
-                            <div className='w-[50%] pl-20 flex absolute b-0'>
-                                <textarea className='w-[80%] h-[5rem] min-h-[5rem] border border-2 pl-4' type="text" />
+                            <div className='w-[40%]  md:right-20 flex absolute b-0'>
+                                <textarea className='md:w-[80%] md:h-[5rem] min-h-[5rem] border border-2 pl-4' type="text" />
                                 <button className='w-[5rem] h-[3rem] rounded-sm ml-[1rem] bg bg-blue-400'>
                                     Send
                                 </button>
