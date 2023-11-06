@@ -68,8 +68,11 @@ export function Home(){
                     For those who cherish the connections between food and community, FoodMates is a virtual meeting point. Discover a wide array of offerings, engage in lively discussions, and take part in local food events. By supporting local producers, you become a vital part of the community's culinary tapestry.
 
                 </p>
-                <p className="w-1/2 text-center text-lg">
+                <p className="w-1/2 text-center text-lg mb-12">
                 Experience the unity of community and fresh, local flavors at FoodMates. Join us now to support local businesses, savor the community spirit, and be part of the local food movement!
+                </p>
+                <p className="w-1/2 text-center text-[2rem] mb-12">
+                    How it works
                 </p>
             </div>
 
@@ -89,7 +92,7 @@ export function Home(){
                     src="https://blog.gemfind.com/hs-fs/hubfs/ecommerce-subway-studio-malaysia%20(1).gif?width=744&height=496&name=ecommerce-subway-studio-malaysia%20(1).gif"
                     alt="" className='w-[70%]'
                 />
-                <p>Select your role</p>
+                <p>Choose your product</p>
             </section>
 
             <section className='w-[20rem] h-[40vh] mb-8 bg bg-white flex flex-col justify-center items-center'>
@@ -97,7 +100,7 @@ export function Home(){
                     src="https://blog.gemfind.com/hs-fs/hubfs/ecommerce-subway-studio-malaysia%20(1).gif?width=744&height=496&name=ecommerce-subway-studio-malaysia%20(1).gif"
                     alt="" className='w-[70%]'
                 />
-                <p>Select your role</p>
+                <p>Get it!</p>
             </section>
 
         </div>

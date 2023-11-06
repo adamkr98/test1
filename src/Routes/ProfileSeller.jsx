@@ -16,11 +16,13 @@ const ProfileSeller = () => {
     const [ MySales, setMySales ] = useState(false);
     const [ MyMessages, setMyMessages ] = useState(false);
     const [ MyCredentials, setMyCredentials ] = useState(false);
-    const [ Categories, setCategories ] = useState(false);
+    // const [ Categories, setCategories ] = useState(false);
     const [ NewProduct, setNewProduct ] = useState(false);
     const [ logoutVisible, setLogoutVisible ] = useState(true);
     const [ tabsVisible, setTabsVisible ] = useState(true);
     const [ addProductImage, setAddProductImage ] = useState(null);
+    const [ Section, setSection ] = useState(false);
+    const [ fruitsSection, setFruitsSection ] = useState(false);
    
     const [image, setImage] = useState(null);
     const quantityItemValue = useRef();
@@ -35,11 +37,11 @@ const ProfileSeller = () => {
           if (width <= 1027) {
             setLogoutVisible(false);
             setTabsVisible(false);
-            setCategories(false);
+            // setCategories(false);
           } else {
             setLogoutVisible(true);
             setTabsVisible(true);
-            setCategories(true);
+            // setCategories(true);
           }
         };
       
@@ -72,7 +74,7 @@ const ProfileSeller = () => {
     const addProduct = () => {
         setNewProduct(true)
         setMyProducts(false)
-        setCategories(false)
+        // setCategories(false)
     }
 
 
@@ -81,23 +83,24 @@ const ProfileSeller = () => {
 
         if(currentBtn === 'My PRODUCTS') {
             setMyProducts(true)
-            setCategories(true)
+            // setCategories(true)
             setMySales(false)
             setMyMessages(false)
             setMyCredentials(false)
             setNewProduct(false)
+            setSection(false)
             
        } else if (currentBtn === 'My SALES') {
             setMyProducts(false)
             setMyMessages(false)
             setMySales(true)
             setMyCredentials(false)
-            setCategories(false)
+            // setCategories(false)
             setNewProduct(false)
             
        } else if (currentBtn === 'My MESSAGES') {
             setMyProducts(false)
-            setCategories(false)
+            // setCategories(false)
             setMySales(false)
             setMyMessages(true)
             setMyCredentials(false)
@@ -105,7 +108,7 @@ const ProfileSeller = () => {
 
        } else if (currentBtn === 'My CREDENTIALS') {
             setMyProducts(false)
-            setCategories(false)
+            // setCategories(false)
             setMySales(false)
             setMyMessages(false)
             setMyCredentials(true)
@@ -140,6 +143,10 @@ const ProfileSeller = () => {
           });
       }
 
+      const openSection = () => {
+        setMyProducts(false);
+        setSection(true);
+      }
       
 
 
@@ -196,7 +203,7 @@ const ProfileSeller = () => {
                             </div>
                         </div>
                     )}
-                    {Categories && (
+                    {/* {Categories && (
                         <div className='flex'>
                             <div onClick={showContent} className='w-[8rem] h-[5vh] bg bg-white active:bg-gray-100 flex justify-center items-center border-b-2 border-r-2 hover:cursor-pointer'>
                                 <p className=''>
@@ -219,7 +226,7 @@ const ProfileSeller = () => {
                                     </p>
                             </div>
                         </div>
-                    )}
+                    )} */}
 
                 {MyProducts && (
                     <div className='xs-w:full xs:h-[75vh] xs:flex xs:flex-wrap xs:items-center xs:justify-center xs:mt-4 w-full h-[70vh] flex flex-wrap gap-5 overflow-y-scroll gap-20 lg:w-full lg:h-[56vh] lg:mt-12'>
@@ -240,41 +247,64 @@ const ProfileSeller = () => {
                         </div>
 
 
-                        <div className='w-[22rem] h-[15rem] border border-red-400 flex'>
-
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-vegetablesSectionImage flex justify-center items-center hover:cursor-pointer'>
+                            <p className='w-full text-[2rem] text-center bg-white'>
+                                VEGETABLES
+                            </p>
                         </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400 flex'>
-
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-fruitsSectionImage flex justify-center items-center hover:cursor-pointer'>
+                            <p className='w-full text-[2rem] text-center bg-white'>
+                                FRUITS
+                            </p>
                         </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400 flex'>
-
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-meatSectionImage flex justify-center items-center'>
+                            <p className='w-full text-[2rem] text-center bg-white'>
+                                MEAT
+                            </p>
                         </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400 flex'>
-
+                        <div onClick={openSection} className='w-[22rem] h-[15rem] bg-cover bg-fishSectionImage flex justify-center items-center'>
+                            <p className='w-full text-[2rem] text-center bg-white'>
+                                FISH
+                            </p>
                         </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400 flex'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
-                        </div>
-                        <div className='w-[22rem] h-[15rem] border border-red-400'>
-
+                        <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
                         </div>
                         
+                        
                     </div>
+                    )}
+                    {Section && (
+                        <div className='w-[95%] h-[60vh] flex flex-wrap justify-between overflow-y-scroll gap-5'>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>  
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+                            <div className='w-[22rem] h-[15rem] border border-red-400 flex justify-center items-center'>
+                            
+                            </div>
+
+                        </div>
                     )}
                     {NewProduct && (
                                 <div className='xs:w-[98%] xs:flex xs:justify-center md:left-0 md:right-0 lg:w-[70vw] lg:h-[30rem] md:flex md:justify-center'>

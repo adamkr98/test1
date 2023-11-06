@@ -11,7 +11,11 @@ export default {
     backgroundImage: {
       'publicPageBg': "url('https://source.unsplash.com/b0IELTWBvT4')",
       'bg': "src/assets/bovia-co-photography-xYDX2_wDiuQ-unsplash.jpg",
-      'registrationImage': "url('https://source.unsplash.com/-8FjF1p-aw0')"
+      'registrationImage': "url('https://source.unsplash.com/-8FjF1p-aw0')",
+      'fruitsSectionImage': "url('https://source.unsplash.com/M_xIaxQE3Ms')",
+      'vegetablesSectionImage': "url('https://source.unsplash.com/--r5KSMkyoSc')",
+      'meatSectionImage': "url('https://source.unsplash.com/obrAaJAFXuw')",
+      'fishSectionImage': "url('https://source.unsplash.com/oagH_K05C9I')"
       
     },
 
